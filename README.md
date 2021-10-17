@@ -4,7 +4,7 @@
 
 Built with the [Meltano Tap SDK](https://sdk.meltano.com) for Singer Taps.
 
-Data from the free Lord of the Rings [the-one-api.dev](https://the-one-api.dev/documentation) API
+Data from the free Lord of the Rings [the-one-api.dev](https://the-one-api.dev/documentation) API which requires an account
 
 ## Installation
 
@@ -29,7 +29,15 @@ tap-lotr --about
 
 ### Source Authentication and Authorization
 
-- [ ] `Developer TODO:` If your tap requires special access on the source system, or any special authentication requirements, provide those here.
+- Create an account at [the-one-api.dev](https://the-one-api.dev/documentation)
+- Create a `config.json` file with the below details
+
+```json
+{
+    "api_key": "<api-key>", 
+    "api_url": "https://the-one-api.dev/v2"
+}
+```
 
 ## Usage
 
