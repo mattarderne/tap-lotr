@@ -17,7 +17,7 @@ SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
 class lotrStream(RESTStream):
     """lotr stream class."""
 
-    limit: int = 5
+    limit: int = 100
 
     @property
     def url_base(self) -> str:
@@ -25,7 +25,7 @@ class lotrStream(RESTStream):
         return self.config["api_url"]
 
     records_jsonpath = "$.docs[*]"  # Or override `parse_response`.
-    next_page_token_jsonpath = "$.next_page"  # Or override `get_next_page_token`.
+    next_page_token_jsonpath = "$.page"  # Or override `get_next_page_token`.
 
     @property
     def authenticator(self) -> BearerTokenAuthenticator:
@@ -47,7 +47,7 @@ class lotrStream(RESTStream):
                 self.next_page_token_jsonpath, response.json()
             )
             first_match = next(iter(all_matches), None)
-            next_page_token = first_match
+            next_page_token = first_match+1
         else:
             next_page_token = response.headers.get("X-Next-Page", None)
 
@@ -59,7 +59,7 @@ class lotrStream(RESTStream):
         """Return a dictionary of values to be used in URL parameterization."""
         return {
             "limit": self.limit,
-            "start": next_page_token,
+            "page": next_page_token,
         }
 
     def parse_response(self, response: requests.Response) -> Iterable[dict]:
