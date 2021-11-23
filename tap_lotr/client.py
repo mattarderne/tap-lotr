@@ -17,7 +17,7 @@ SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
 class lotrStream(RESTStream):
     """lotr stream class."""
 
-    limit: int = 100
+    limit: int = 10
 
     @property
     def url_base(self) -> str:
@@ -25,7 +25,8 @@ class lotrStream(RESTStream):
         return self.config["api_url"]
 
     records_jsonpath = "$.docs[*]"  # Or override `parse_response`.
-    next_page_token_jsonpath = "$.page"  # Or override `get_next_page_token`.
+    page_number_jsonpath = "$.page"  # Or override `get_next_page_token`.
+    pages_count_json_path = "$.pages"
 
     @property
     def authenticator(self) -> BearerTokenAuthenticator:
@@ -39,17 +40,20 @@ class lotrStream(RESTStream):
         self, response: requests.Response, previous_token: Optional[Any]
     ) -> Optional[Any]:
         """Return a token for identifying next page or None if no more pages."""
-        # TODO: If pagination is required, return a token which can be used to get the
-        #       next page. If this is the final page, return "None" to end the
-        #       pagination loop.
-        if self.next_page_token_jsonpath:
-            all_matches = extract_jsonpath(
-                self.next_page_token_jsonpath, response.json()
-            )
-            first_match = next(iter(all_matches), None)
-            next_page_token = first_match+1
+        pages_count = extract_jsonpath(
+            self.pages_count_json_path, response.json()
+        )
+        pages_count = next(iter(pages_count), None)
+
+        page_number = extract_jsonpath(
+            self.page_number_jsonpath, response.json()
+        )
+        page_number = next(iter(page_number), None)
+
+        if pages_count == page_number:
+            next_page_token = None
         else:
-            next_page_token = response.headers.get("X-Next-Page", None)
+            next_page_token = page_number + 1
 
         return next_page_token
 
