@@ -117,6 +117,7 @@ Run meltano
 # Test invocation:
 meltano invoke tap-lotr --version
 # OR run a test `elt` pipeline:
+mkdir output
 meltano elt tap-lotr target-jsonl
 ```
 
