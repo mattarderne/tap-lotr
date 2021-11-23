@@ -1,0 +1,265 @@
+{
+  "streams": [
+    {
+      "tap_stream_id": "books",
+      "replication_method": "FULL_TABLE",
+      "key_properties": [
+        "id"
+      ],
+      "schema": {
+        "properties": {
+          "name": {
+            "description": "The Books name",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "_id": {
+            "description": "The Books's system ID",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "stream": "books",
+      "metadata": [
+        {
+          "breadcrumb": [
+            "properties",
+            "name"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "_id"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [],
+          "metadata": {
+            "inclusion": "available",
+            "selected": true,
+            "table-key-properties": [
+              "id"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "tap_stream_id": "chapters",
+      "replication_method": "FULL_TABLE",
+      "key_properties": [
+        "_id"
+      ],
+      "schema": {
+        "properties": {
+          "_id": {
+            "description": "The Chapter ID",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "chapterName": {
+            "description": "The chapterName name",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "stream": "chapters",
+      "metadata": [
+        {
+          "breadcrumb": [
+            "properties",
+            "_id"
+          ],
+          "metadata": {
+            "inclusion": "automatic"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "chapterName"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [],
+          "metadata": {
+            "inclusion": "available",
+            "selected": true,
+            "table-key-properties": [
+              "_id"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "tap_stream_id": "movies",
+      "replication_method": "FULL_TABLE",
+      "key_properties": [
+        "_id"
+      ],
+      "schema": {
+        "properties": {
+          "_id": {
+            "description": "The Movies's system ID",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "name": {
+            "description": "The Movies name",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "budgetInMillions": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "boxOfficeRevenueInMillions": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "academyAwardNominations": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "academyAwardWins": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "rottenTomatoesScore": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "runtimeInMinutes": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "stream": "movies",
+      "metadata": [
+        {
+          "breadcrumb": [
+            "properties",
+            "_id"
+          ],
+          "metadata": {
+            "inclusion": "automatic"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "name"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "budgetInMillions"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "boxOfficeRevenueInMillions"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "academyAwardNominations"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "academyAwardWins"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "rottenTomatoesScore"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "runtimeInMinutes"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [],
+          "metadata": {
+            "inclusion": "available",
+            "selected": true,
+            "table-key-properties": [
+              "_id"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

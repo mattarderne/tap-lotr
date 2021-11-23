@@ -48,12 +48,17 @@ You can easily run `tap-lotr` by itself or in a pipeline using [Meltano](https:/
 ```bash
 tap-lotr --version
 tap-lotr --help
-tap-lotr --config CONFIG --discover > ./catalog.json
+tap-lotr --config config.json --discover > ./catalog.json
+```
+
+Run with poetry
+```bash
+poetry run tap-lotr --config config.json
 ```
 
 ## Developer Resources
 
-- [ ] `Developer TODO:` As a first step, scan the entire project for the text "`TODO:`" and complete any recommended steps, deleting the "TODO" references once completed.
+- Use the `.vscode/launch.json` for debugging if you use VSCode. 
 
 ### Initialize your Development Environment
 
