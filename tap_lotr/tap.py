@@ -17,9 +17,9 @@ from tap_lotr.streams import (
 #       OR rewrite discover_streams() below with your custom logic.
 STREAM_TYPES = [
     BooksStream,
-    ChaptersStream,
-    MoviesStream,
-    # CharactersStream,
+    # ChaptersStream,
+    # MoviesStream,
+    # # CharactersStream,
 ]
 
 

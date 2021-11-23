@@ -5,6 +5,7 @@
 config.json
 catalog.json
 poetry.lock
+.meltano
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

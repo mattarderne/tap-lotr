@@ -4,11 +4,11 @@
 
 Built with the [Meltano Tap SDK](https://sdk.meltano.com) for Singer Taps.
 
-Data from the free Lord of the Rings [the-one-api.dev](https://the-one-api.dev/documentation) API which requires an account
+Data from the free Lord of the Rings [the-one-api.dev](https://the-one-api.dev/documentation) API which requires an account.
+
+Note - uncomment the rest of the streams in `STREAM_TYPES` in `tap_lotr/tap.py` but watch out for rate-limiting and throttling of the API if you do.
 
 ## Installation
-
-- [ ] `Developer TODO:` Update the below as needed to correctly describe the install procedure. For instance, if you do not have a PyPi repo, or if you want users to directly install from your git repo, you can modify this step as appropriate.
 
 ```bash
 pipx install tap-lotr
@@ -17,8 +17,6 @@ pipx install tap-lotr
 ## Configuration
 
 ### Accepted Config Options
-
-- [ ] `Developer TODO:` Provide a list of config options accepted by the tap.
 
 A full list of supported settings and capabilities for this
 tap is available by running:
@@ -100,8 +98,21 @@ cd tap-lotr
 meltano install
 ```
 
+
+Set variables and API token
+```bash
+meltano config tap-lotr set api_url https://the-one-api.dev/v2
+meltano config tap-lotr set api_key <your_api_key>
+```
+
+Install a test loader
+```bash
+meltano add loader target-jsonl
+```
+
 Now you can test and orchestrate using Meltano:
 
+Run meltano
 ```bash
 # Test invocation:
 meltano invoke tap-lotr --version

@@ -1,26 +1,23 @@
 version: 1
 send_anonymous_usage_stats: true
-project_id: tap-lotr
+project_id: b4264b0d-5568-43be-8bec-06af1fc1001f
 plugins:
   extractors:
   - name: tap-lotr
     namespace: tap_lotr
-    # TODO: To test using Meltano, replace with absolute path
-    #       to the tap-lotr.sh script:
     executable: ./tap-lotr.sh
     capabilities:
     - state
-    - catalog
-    - discover
+    settings:
+    - name: api_key
+      kind: password
+    - name: start_time
+      kind: string
+    - name: api_url
+      kind: string
     config:
       start_date: '2010-01-01T00:00:00Z'
-    settings:
-    # TODO: To configure using Meltano, declare settings and their types here:
-    - name: username
-    - name: password
-      kind: password
-    - name: start_date
-      value: '2010-01-01T00:00:00Z'
+      api_url: https://the-one-api.dev/v2
   loaders:
   - name: target-jsonl
     variant: andyh1203
