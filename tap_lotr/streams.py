@@ -12,7 +12,7 @@ class BooksStream(lotrStream):
     """Define custom stream."""
     name = "books"
     path = "/book"
-    primary_keys = ["id"]
+    primary_keys = ["_id"]
     replication_key = None
 
     schema = th.PropertiesList(
